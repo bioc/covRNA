@@ -10,6 +10,7 @@
 # (default: "gray",transblue,transred);
 # [alphatrans] defines degree of transparency of the second and third col;
 # [cex] defines text size (default=1);
+# [rangex, rangey] define ize of the plot (default=2);
 # [...] additional features can be added
 
 vis <- function(Stat, Ord=NULL, alpha=0.05, xaxis=1, yaxis=2,
@@ -41,8 +42,8 @@ vis <- function(Stat, Ord=NULL, alpha=0.05, xaxis=1, yaxis=2,
     colcoor <- Ord$c1[,c(xaxis,yaxis)]
 
     # span the coordinate system
-    plot(rangex*range(min(rowcoor[,1], colcoor[,1]), max(rowcoor[,1], colcoor[,1])),
-         rangey*range(min(rowcoor[,2], colcoor[,2]), max(rowcoor[,2], colcoor[,2])),
+    plot(rangex * range(min(rowcoor[,1], colcoor[,1]), max(rowcoor[,1], colcoor[,1])),
+         rangey * range(min(rowcoor[,2], colcoor[,2]), max(rowcoor[,2], colcoor[,2])),
          xlab=paste("axis", xaxis),
          ylab=paste("axis", yaxis),
          bty='l')
