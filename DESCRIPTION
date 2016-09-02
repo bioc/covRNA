@@ -4,8 +4,8 @@ Title: Multivariate Analysis of Transcriptomic Data
 Version: 0.99.1
 Author: Lara Urban <lara.h.urban@ebi.ac.uk>
 Maintainer: Lara Urban <lara.h.urban@ebi.ac.uk>
-Description: This package provides the analysis methods fourthcorner
-        and RLQ analysis for large-scale transcriptomic data.
+Description: This package provides the analysis methods fourthcorner and RLQ
+    analysis for large-scale transcriptomic data.
 License: GPL (>= 2)
 LazyData: TRUE
 Depends: ade4, Biobase

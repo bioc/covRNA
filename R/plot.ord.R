@@ -14,7 +14,11 @@ plot.ord <- function(x, feature="variance", xaxis=1, yaxis=2,
                          labelsize=1.25, boxes=TRUE, ...) {
 
   if (feature=="rows L") {
-    s.label(x$lR[, c(xaxis, yaxis)], clabel=labelsize, boxes=boxes)
+    plot(x$lR[, c(xaxis, yaxis)], type='n', xlab=paste("axis", xaxis),
+        ylab=paste("axis", yaxis), bty='l')
+    text(x$lR[,1], x$lR[,2],
+        row.names(x$lR), cex=labelsize)
+    #s.label(x$lR[, c(xaxis, yaxis)], clabel=labelsize, boxes=boxes)
   }
   if (feature=="columns L") {
     s.label(x$lQ[, c(xaxis, yaxis)], clabel=labelsize, boxes=boxes)

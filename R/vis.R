@@ -40,13 +40,12 @@ vis <- function(Stat, Ord=NULL, alpha=0.05, xaxis=1, yaxis=2,
     rowcoor <- Ord$l1[,c(xaxis,yaxis)]
     colcoor <- Ord$c1[,c(xaxis,yaxis)]
 
-    # span the coordinate system by row coordinates
-    s.label(colcoor, clabel=0, cpoint=0,
-            xlim=rangex*range(min(rowcoor[,1], colcoor[,1]), max(rowcoor[,1], colcoor[,1])),
-            ylim=rangey*range(min(rowcoor[,2], colcoor[,2]), max(rowcoor[,2], colcoor[,2])))
-
-    # set small margins
-    # par(mar=c(0.1, 0.1, 0.1, 0.1))
+    # span the coordinate system
+    plot(rangex*range(min(rowcoor[,1], colcoor[,1]), max(rowcoor[,1], colcoor[,1])),
+         rangey*range(min(rowcoor[,2], colcoor[,2]), max(rowcoor[,2], colcoor[,2])),
+         xlab=paste("axis", xaxis),
+         ylab=paste("axis", yaxis),
+         bty='l')
 
     # order rows of rowcoor and colcoor alphabetically
     rowcoor <- rowcoor[order(rownames(rowcoor)),]
@@ -65,13 +64,13 @@ vis <- function(Stat, Ord=NULL, alpha=0.05, xaxis=1, yaxis=2,
                     unique(c(possig[,2], negsig[,2])))
         # if there are significant associations:
         # visualise segments between significant variables in cols[2,3]
-        if(length(sig[[1]]) > 0) {
-            if(nrow(possig) > 0) {
+        if (length(sig[[1]]) > 0) {
+            if (nrow(possig) > 0) {
                 segments(rowcoor[possig[,1],1], rowcoor[possig[,1],2],
                          colcoor[possig[,2],1], colcoor[possig[,2],2], lty=1, lwd=2,
                          col=col[2])
             }
-            if(nrow(negsig) > 0) {
+            if (nrow(negsig) > 0) {
                 segments(rowcoor[negsig[,1],1], rowcoor[negsig[,1],2],
                          colcoor[negsig[,2],1], colcoor[negsig[,2],2], lty=1, lwd=2,
                          col=col[3])
@@ -96,10 +95,6 @@ vis <- function(Stat, Ord=NULL, alpha=0.05, xaxis=1, yaxis=2,
                 text(colcoor[sig[[2]],1], colcoor[sig[[2]],2],
                      row.names(colcoor)[sig[[2]]], cex=cex)
             }
-
-            # add points to significant variables
-            # if (pch1 != 0) points(rowcoor[sig[[1]],], pch=pch1)
-            # if (pch2 != 0) points(colcoor[sig[[2]],], pch=pch2)
 
             # if there are no significant associations, show all in col[1]
         } else {
