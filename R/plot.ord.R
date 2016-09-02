@@ -6,29 +6,41 @@
 # "columns L","rows L", "columns R", "columns Q", "variance",
 # "correlation circle R" or "correlation circle Q" (default: "variance");
 # [xaxis] and [yaxis] define axes of xination (default:1 and 2, resp.);
-# [labelsize] defines size of the label (default: 1.25);
-# [boxes] if boxes shall be drawn around labels (default: TRUE);
+# [cex] defines text size (default: 1);
+# [rangex, rangey] define ize of the plot (default=2);
 # [...] additional features can be added
 
 plot.ord <- function(x, feature="variance", xaxis=1, yaxis=2,
-                         labelsize=1.25, boxes=TRUE, ...) {
+                         cex=1, rangex=2, rangey=2, ...) {
 
   if (feature=="rows L") {
     plot(x$lR[, c(xaxis, yaxis)], type='n', xlab=paste("axis", xaxis),
         ylab=paste("axis", yaxis), bty='l')
-    text(x$lR[,1], x$lR[,2],
-        row.names(x$lR), cex=labelsize)
-    #s.label(x$lR[, c(xaxis, yaxis)], clabel=labelsize, boxes=boxes)
+    text(x$lR[,1], x$lR[,2], row.names(x$lR), cex=cex)
   }
+    
   if (feature=="columns L") {
-    s.label(x$lQ[, c(xaxis, yaxis)], clabel=labelsize, boxes=boxes)
+    plot(x$lQ[, c(xaxis, yaxis)], type='n', xlab=paste("axis", xaxis),
+        ylab=paste("axis", yaxis), bty='l')
+    text(x$lQ[,1], x$lQ[,2], row.names(x$lQ), cex=cex)
   }
+    
   if (feature=="correlation circle R") {
-    s.corcircle(x$aR, xaxis, yaxis, clabel=labelsize)
+    plot(x$aR, type='n', bty='l')
+    text(x$aR[,1], x$aR[,2], row.names(x$aR), cex=1)
+    text(0,0, "0")
+    segments(0,0,x$aR[1,1], x$aR[1,2])
+    segments(0,0,x$aR[2,1], x$aR[2,2])
   }
+    
   if (feature=="correlation circle Q") {
-    s.corcircle(x$aQ, xaxis, yaxis, clabel=labelsize)
+    plot(x$aQ, type='n', bty='l')
+    text(x$aQ[,1], x$aQ[,2], row.names(x$aQ), cex=1)
+    text(0,0, "0")
+    segments(0,0,x$aQ[1,1], x$aQ[1,2])
+    segments(0,0,x$aQ[2,1], x$aQ[2,2])    
   }
+    
   if (feature=="columns R") {
     s.arrow(x$l1, xax=xaxis, yax=yaxis, clabel=labelsize, boxes=boxes)
   }
