@@ -46,6 +46,7 @@ vis <- function(Stat, Ord=NULL, alpha=0.05, xaxis=1, yaxis=2,
          rangey * range(min(rowcoor[,2], colcoor[,2]), max(rowcoor[,2], colcoor[,2])),
          xlab=paste("axis", xaxis),
          ylab=paste("axis", yaxis),
+         type='n',
          bty='l')
 
     # order rows of rowcoor and colcoor alphabetically

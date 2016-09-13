@@ -133,7 +133,7 @@ If the gene identifiers do not correspond to each other, the `Bioconductor` pack
 Like this, we receive a fully annotated dataset which can be analysed by functions of the `covRNA` package.
 
 # 4. Installation
-The `covRNA` package is freely available from `Bioconductor` at http://www.bioconductor.org.
+The `covRNA` package is freely available from `Bioconductor` at https://bioconductor.org/packages/devel/bioc/html/covRNA.html.
 
 # References
 Benjamini, Y. and Hochberg, Y. (1995). \emph{Cotrlling the false discovery rate: a practical and powerful approach to multiple testing}. Journal of the Royal Statistical Society. Series B (Methodological). 289:300.

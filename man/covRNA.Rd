@@ -8,7 +8,7 @@ Gene expression data normally comes with covariates of the samples and of the ge
 
 The fourthcorner analysis and RLQ implemented in the ade4 package are adapted to easily analyze large-scale transcriptomic data. (1) Runtime and storage space are significantly reduced, (2) the analysis accounts for tran-scriptome-specific shapes of the empirical permutation distributions, (3) the analysis is rendered user-friendly by supplying automation, simple design-ing of plots and unsupervised gene filtering.
 
-To cite covRNA, please use citation("covRNA"). For further details, please refer to the vignette and the man pages.
+To cite covRNA, please use citation("covRNA"). For further details, please refer to the vignette by openVignette("covRNA") and the man pages.
 }
 \details{
 \tabular{ll}{

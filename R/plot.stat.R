@@ -5,6 +5,8 @@
 # [col] three colours: first colour defines non-significant associations,
 # second/third colour define significant positive/negative asscoiations
 # (default: "lightgrey","deepskyblue","red");
+# [sig] if TRUE, only covariates involved in at least one significant
+# association are shown (default: TRUE)
 # [alpha] defines significance level of pvalues (default:0.05);
 # [show] defines which p-values shall be chosen (default:adj);
 # [cex] defines text size of table;
@@ -15,20 +17,31 @@
 # right/top (if>0) or to the left/bottom (if<0);
 # [...] additional features can be added
 
-plot.stat <- function(x, col=c("lightgrey","deepskyblue","red"),
-                          alpha=0.05, show=c("adj","non-adj"), cex=1,
-                          ynames, xnames, ytext=1, xtext=1, shiftx=0, shifty=0,
-                          ...) {
+plot.stat <- function(x, col=c("lightgrey","deepskyblue","red"), sig=TRUE,
+                      alpha=0.05, show=c("adj","non-adj"), cex=1,
+                      ynames, xnames, ytext=1, xtext=1, shiftx=0, shifty=0,
+                      ...) {
 
-  # save statistical values as matrix and as vector
+  # save statistical values as matrix
   stat <- x$stat
   statnum <- as.numeric(stat)
 
-  # save either adjusted or non-adjusted p-values as vector (default:adj)
+  # save either adjusted or non-adjusted p-values as matrix (default:adj)
   show <- match.arg(show)
   if (show=="non-adj") {
-    statpval <- as.numeric(x$pvalue)
-  } else statpval <- as.numeric(x$adj.pvalue)
+    statpvalm <- x$pvalue
+  } else {
+    statpvalm <- x$adj.pvalue 
+  }
+  
+  if (sig == TRUE) {
+    rows <- unique(which(statpvalm<=alpha, arr.ind = TRUE)[,1])
+    columns <- unique(which(statpvalm<=alpha, arr.ind = TRUE)[,2])
+    statpvalm <- statpvalm[rows, columns]
+    statpval <- as.numeric(statpvalm)
+    stat <- stat[rows, columns]
+    statnum <- as.numeric(stat)
+  }
 
   # choose significant associations
   statsel <- which(statpval <= alpha)

@@ -6,14 +6,15 @@ The function plot produces a cross table of the gene and sample covariates of a 
 }
 
 \usage{
-\method{plot}{stat}(x, col=c("lightgrey","deepskyblue","red"), alpha=0.05,
-                    show=c("adj","non-adj"), cex=1, ynames, xnames, ytext=1,
-                    xtext=1, shiftx=0, shifty=0, ...)
+\method{plot}{stat}(x, col=c("lightgrey","deepskyblue","red"), sig=TRUE,
+                    alpha=0.05, show=c("adj","non-adj"), cex=1, 
+                    ynames, xnames, ytext=1, xtext=1, shiftx=0, shifty=0, ...)
 }
 
 \arguments{
   \item{x}{An object of class stat that shall be visualised as a cross table.}
   \item{col}{A vector of three colours. The first colour represents non-significant, the second positive significant, the third negative significant associations in the cross table.}
+  \item{sig}{If TRUE (default), only covariates involved in at least one significant association are plotted.}
   \item{alpha}{The significance level.}
   \item{show}{'adj' or 'non-adj' indicate if adjusted or raw p-values shall be plotted, respectively.}
   \item{cex}{The magnitude of the text in the cross table.}
