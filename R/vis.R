@@ -33,7 +33,7 @@ vis <- function(Stat, Ord=NULL, alpha=0.05, xaxis=1, yaxis=2,
     # col: neutral, positive, negative; alphatrans: level of transparency
     transblue=rgb(0, 0, 1, alpha=alphatrans)
     transred=rgb(1, 0, 0, alpha=alphatrans)
-
+    
     # size of text
     cex <- par("cex") * cex
 
