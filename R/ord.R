@@ -85,8 +85,15 @@ ord <- function(ExprSet, R=NULL, L=NULL, Q=NULL, exprvar=1, nf=2) {
   }
 
   # get variable type of R and Q
-  varR <- apply(tabR, 2, function(x) if (is.numeric(x)) TRUE else FALSE)
-  varQ <- apply(tabQ, 2, function(x) if (is.numeric(x)) TRUE else FALSE)
+  varR <- vector(mode="logical", length=dim(tabR)[2])
+  for (i in 1:dim(tabR)[2]) {
+      varR[i] <- is.numeric(tabR[,i])
+  }
+  
+  varQ <- vector(mode="logical", length=dim(tabQ)[2])
+  for (i in 1:dim(tabQ)[2]) {
+      varQ[i] <- is.numeric(tabQ[,i])
+  }
 
   # visualize the three tables with respect to variable type of R/Q
 
