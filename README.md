@@ -1,9 +1,9 @@
 # covRNA
 
-covRNA (covariate analysis of RNA-Seq data) is a fast and user-friendly R package which implements fourthcorner analysis and RLQ of transcriptomic data. 
+The R package covRNA provides a convenient and fast interface for testing and visualizing the relationship between sample and gene covariates mediated by gene expression data. The fourthcorner analysis tests the statistical significance of sample and gene covariate relationships by permutation tests while the RLQ visualizes relationships within and between sample and gene covariates.
 
-Gene expression data normally comes with covariates of the samples and of the genes. To analyze associations between sample and gene covariates, the fourthcorner analysis tests the statistical significance of the associations by permutation tests while the RLQ visualizes associations within and be-tween the covariates.
-
-The fourthcorner analysis and RLQ implemented in the ade4 package are adapted to easily analyze large-scale transcriptomic data. (1) Runtime and storage space are significantly reduced, (2) the analysis accounts for tran-scriptome-specific shapes of the empirical permutation distributions, (3) the analysis is rendered user-friendly by supplying automation, simple design-ing of plots and unsupervised gene filtering.
+The method is based on the powerful fourthcorner and RLQ analyses used in ecological research for the analysis of species abundance data. We have modified the algorithms of the R package ade4 to make the method suitable to the distributional characteristics of RNA-Seq read counts and microarray intensities and to provide a parallelized high-performance implementation to allow for the analysis of large-scale transcriptomics data. We further supply the user with methods for unsupervised gene filtering and plotting functions to ease the analysis workflow. cov-RNA can be easily applied to microarray or RNA-Seq data of any organism. We provide a vignette with an exemplified analysis of an RNA-Seq dataset of Bacillus anthracis.
 
 To cite covRNA, please use citation("covRNA"). For further details, please refer to the vignette and the man pages.
+
+
