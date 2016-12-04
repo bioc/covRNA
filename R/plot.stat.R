@@ -21,7 +21,7 @@ plot.stat <- function(x, col=c("lightgrey","deepskyblue","red"), sig=TRUE,
                       alpha=0.05, show=c("adj","non-adj"), cex=1,
                       ynames, xnames, ytext=1, xtext=1, shiftx=0, shifty=0,
                       ...) {
-
+    
   # save statistical values as matrix
   stat <- x$stat
   statnum <- as.numeric(stat)
