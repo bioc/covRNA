@@ -12,7 +12,7 @@
 
 plot.ord <- function(x, feature="variance", xaxis=1, yaxis=2,
                          cex=1, range=2, ...) {
-
+    
   if (feature=="rows L") {
     plot(range * x$lR[, c(xaxis, yaxis)], type='n', xlab=paste("axis", xaxis),
         ylab=paste("axis", yaxis), bty='l')
