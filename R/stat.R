@@ -178,10 +178,15 @@ stat <- function(ExprSet, R=NULL, L=NULL, Q=NULL, npermut=9999, padjust="BH", nr
   # delete the initialisations
   matR <- as.matrix(matR[,-1])
   colnames(matR) <- namesR[-1]
-  # order the variables alphabetically
-  if (dim(matR)[2] !=1) {matR <- matR[, order(colnames(matR))]}
-  indexR <- indexR[-1]
   rm(namesR)
+  indexR <- indexR[-1]
+  # order the variables alphabetically
+  if (dim(matR)[2] !=1) {
+      indexR <- indexR[order(colnames(matR))]
+      matR <- matR[, order(colnames(matR))]
+      }
+  
+  
 
 
   # Q: do the same with matrix Q (see matrix R)
@@ -203,9 +208,13 @@ stat <- function(ExprSet, R=NULL, L=NULL, Q=NULL, npermut=9999, padjust="BH", nr
   }
   matQ <- as.matrix(matQ[,-1])
   colnames(matQ) <- namesQ[-1]
-  if (dim(matQ)[2] !=1) {matQ <- matQ[, order(colnames(matQ))]}
-  indexQ <- indexQ[-1]
   rm(namesQ)
+  indexQ <- indexQ[-1]
+  if (dim(matQ)[2] !=1) {
+      indexQ <- indexQ[order(colnames(matQ))]
+      matQ <- matQ[, order(colnames(matQ))]
+      }
+  
 
   # calculate index as sum of indexR and indexQ; only index==4 is interesting,
   # since the both variables are categorical (important for
@@ -299,6 +308,13 @@ stat <- function(ExprSet, R=NULL, L=NULL, Q=NULL, npermut=9999, padjust="BH", nr
     if (is.r[i] == TRUE) {pvalue[i] <- pvaluer[i]}
     else {pvalue[i] <- pvaluec[i]}
   }
+  
+  # statistical tests
+  stattest <- matrix('corr coeff', dimnames = list(colnames(matR), colnames(matQ)), 
+                     nrow = length(indexR), ncol=length(indexQ))
+  stattest[index==4] <- 'Chi-square related test'
+  
+  # assign p-values
   result$pvalue <- matrix(pvalue, ncol=ncol(result$stat),
                           nrow=nrow(result$stat),
                           dimnames=list(rownames(result$stat),
@@ -306,6 +322,7 @@ stat <- function(ExprSet, R=NULL, L=NULL, Q=NULL, npermut=9999, padjust="BH", nr
 
   # add call of the function to result
   result$call <- match.call()
+  result$stattest <- stattest
   # add number of analysed genes to result
   if (exprvar != 1) {result$ngenes <- ngenes} else result$ngenes <- "all"
   # add number of permutations to result
