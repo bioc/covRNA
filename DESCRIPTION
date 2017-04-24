@@ -1,7 +1,7 @@
 Package: covRNA
 Type: Package
 Title: Multivariate Analysis of Transcriptomic Data
-Version: 1.1.1
+Version: 1.2.0
 Author: Lara Urban <lara.h.urban@ebi.ac.uk>
 Maintainer: Lara Urban <lara.h.urban@ebi.ac.uk>
 Description: This package provides the analysis methods fourthcorner and RLQ
