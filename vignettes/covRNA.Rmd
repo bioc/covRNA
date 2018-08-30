@@ -15,8 +15,9 @@ This vignette exemplifies how the `covRNA` package uses fourthcorner analysis an
 
 Please install the package as follows. 
 ```{r, eval=FALSE, prompt=FALSE}
-source("https://bioconductor.org/biocLite.R")
-biocLite("covRNA")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("covRNA")
 ```
 
 # Overview of the Analysis
@@ -115,8 +116,9 @@ RANK and GSEA discover class J as significantly enriched (p=6.40e^-11^ and p=0.0
 If a dataset does not contain gene covariates yet, `Bioconductor` offers various tools to assign gene covariates to the genes. We propose to use the `Bioconductor` package `biomaRt` (Durinck *et al.*, 2009). 
 
 ```{r, eval=FALSE, prompt=TRUE}
-source("https://bioconductor.org/biocLite.R")
-biocLite("biomaRt")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("biomaRt")
 library(biomaRt)
 ```
 
